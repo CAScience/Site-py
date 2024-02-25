@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Products</title>
+</head>
+<body>
+    <h2>Manage Products</h2>
+    <form method="post" action="/add">
+        <label>Product Name:</label>
+        <input type="text" name="name" required>
+        <input type="submit" value="Add Product">
+    </form>
+    <ul>
+        {% for product in products %}
+        <li>
+            {{ product.name }}
+            <form method="post" action="/delete" style="display:inline;">
+                <input type="hidden" name="name" value="{{ product.name }}">
+                <input type="submit" value="Delete">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/logout">Logout</a>
+</body>
+</html>
